@@ -28,7 +28,7 @@ class Lsystem {
 
         if (originalAxiom[c] == 'X'){
           newAxiom +=lsys.Xrule;
-        } 
+        }
         
         if (originalAxiom[c] == 'Y'){
           newAxiom +=lsys.Yrule; 
