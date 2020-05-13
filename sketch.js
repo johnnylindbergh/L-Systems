@@ -1,6 +1,4 @@
 
-
-
 class Lsystem {
 
   constructor() {
@@ -46,56 +44,47 @@ class Lsystem {
   }
 
   drawLsys() {
+    background(255);
+    push();
+    translate(this.startX, this.startY);
+    //console.log(axiom);
+    for (var c = 0; c < this.Lstring.length; c++){
+      var character = this.Lstring[c];
+      //console.log(character)
+      if(character == 'F'){
+        stroke(0);
+        line(0,this.stepLength,0,0);
+        translate(0,this.stepLength);
 
-
-
-  background(255);
-  push();
-  translate(this.startX, this.startY);
-//console.log(axiom);
-  for (var c = 0; c < this.Lstring.length; c++){
-    var character = this.Lstring[c];
-    //console.log(character)
-    if(character == 'F'){
-      stroke(0);
-      line(0,this.stepLength,0,0);
-      translate(0,this.stepLength);
-
-    }
-    if (this.pushAndPop){
-      if(character == '['){
-        push();  
       }
-       if(character == ']'){
-        pop();  
+      if (this.pushAndPop){
+        if(character == '['){
+          push();  
+        }
+        if(character == ']'){
+          pop();  
+        }
+      }
+      if(character == '+'){
+        if (this.randomRotation){
+          rotate(random(this.maxRotation));
+        } else {
+          rotate(this.angle);
+        }
+      }
+      if(character == '-'){
+        if (this.randomRotation){
+          rotate(-random(this.maxRotation));
+        } else {
+          rotate(-this.angle);
+        }   
       }
     }
-    if(character == '+'){
-      if (this.randomRotation){
-        rotate(random(this.maxRotation));
-      } else {
-        rotate(this.angle);
-      }
-    }
-    if(character == '-'){
-      if (this.randomRotation){
-        rotate(-random(this.maxRotation));
-      } else {
-        rotate(-this.angle);
-      }   
-    }
+
+    pop();
   }
 
-  pop();
-  
 }
-
-
-}
-
-
-
-
 
 var lsys;
 
@@ -111,33 +100,25 @@ function setup() {
   frameRate(5);
   lsys.startX = windowWidth/2;
   lsys.startY = windowHeight/2;
-
 }
 
 function draw(){
-
   if (lsys.shiftMode ){
     if (lsys.Lstring){
-     
       lsys.startX =  mouseX;
       lsys.startY =  mouseY;
-     lsys.drawLsys();
+      lsys.drawLsys();
     }
   } else {
     if (!lsys.randomRotation){
-    lsys.drawLsys();
-  }
+      lsys.drawLsys();
+    }
   }
 
 }
-
 
 function mouseClicked() {
-  if (dist(mouseX,mouseY, lsys.startX, lsys.startY)<200){
-
-lsys.shiftMode = !lsys.shiftMode;
+  if (dist(mouseX,mouseY, lsys.startX, lsys.startY) < 200) {
+    lsys.shiftMode = !lsys.shiftMode;
+  }
 }
-
-}
-
-
