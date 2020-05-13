@@ -1,20 +1,20 @@
 # L-Systems
 L-systems for the people, by the people.
 
-##Example L-System grammar 
+## Example L-System grammar 
 
-###Axiom
+### Axiom
 ```
 F-G-G
 ```
 ------------------------------------------------
-###Production Rules
-````
+### Production Rules
+```
 F : F−G+F+G−F
 G : GG
 ```
 ------------------------------------------------
-###Actions
+### Actions
 ```
 + : turn 120
 - : turn -120
