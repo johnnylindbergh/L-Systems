@@ -1,0 +1,13 @@
+div {
+		font-size: 15px;
+	color: black;
+	padding: 3px;
+	text-align: left;
+	font-family: Lucida Sans Unicode;
+}
+
+#settings {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 20%;
+	margin:3px;
+}

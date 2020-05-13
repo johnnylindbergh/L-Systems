@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <script language="javascript" type="text/javascript" src="./lib/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="sketch.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script language="javascript" type="text/javascript" src="interface.js"></script> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style> body {padding: 0; margin: 0;} </style>
+
+  </head>
+
+  <body>
+  	</body>
+  	<div>
+  	<div id="settings">
+  		
+  	Axiom: <input type="text" value="FX" id ="setAxiom"/> <br>
+
+  	X ->  <input type="text" value="[X+YF+]" id ="setXrule"/> <br>
+
+  	Y ->  <input type="text" value="[-FX-Y]" id="setYrule"/><br>
+
+  	Angle of Rotation:
+  	<input type="range" value="90" id="setAngle" min="0" max = "360"/><br>
+
+  	Segment Length:
+  	<input type="range" value="5" id="setStepLength" min="1" max = "100"/><div id="stepLength">5</div>
+
+  	Random Rotation: <input type="checkbox" id="randomRotation"/><br>
+  	<div id ="maxRotationDiv" style="display: none;">Max Rotation: <input  type="text" value="25" id="maxRotation" min="0" max = "360"/> 
+  	</div>
+  	<br>
+
+  	Push/pop Matrix: <input checked type="checkbox" id="matrix"/><br>
+
+  	Number of Iterations : <br>
+  	<input type="range" value="5" id="setIterations" min="2" max = "12"/><div id="iterations">5</div>
+  	
+  	<input type="button" id="generate" value="Generate" />
+  
+  </div>
+</div>
+  
+</html>
