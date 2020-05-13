@@ -6,11 +6,30 @@ function parseProductionRules(rawText, cb) {
     {
       “F” → [“F-G+F+G-F”, “FG”]
       “G” → [“EGG”]
+      ...
     }
   */
 
+  // first, just extract what's on the left and right hand sides of each rule
   parseRawText(rawText, (err, extractedRules) => {
-    cb(err, extractedRules);
+    if (err) return cb(err);
+
+    const rulesTable = {};
+    let lhs, rhs;
+
+    for (let i = 0; i < extractedRules.length; i++) {
+      lhs = extractedRules[i].LHS;
+      rhs = extractedRules[i].RHS;
+
+      // map LHS to all possible RHS 
+      if (!rulesTable[lhs]) {
+        rulesTable[lhs] = [rhs];
+      } else {
+        rulesTable[lhs].push(rhs);
+      }
+    }
+
+    cb(err, rulesTable);
   });
 }
 
@@ -25,6 +44,7 @@ function parseActions(rawText, cb) {
       “[“ → () => { push(); }
     }
   */
+  // TODO: write this function
 }
 
 function parseRawText(rawText, cb) {
@@ -43,8 +63,14 @@ function parseRawText(rawText, cb) {
       return cb(new Error(`The line "${line}" had an incorrect amount of colons`));
     }
 
-    if (!splitByColon[0] || !splitByColon[1]) {
+    let lhs = splitByColon[0], rhs = splitByColon[1];
+
+    if (!lhs || !rhs) {
       return cb(new Error(`The line "${line}" errored: Both the left-hand side and right-hand side must be non-empty`));
+    }
+
+    if (lhs.length != 1) {
+      return cb(new Error(`The line "${line} errored: The left-hand side must be only one character`));
     }
 
     ret.push({
@@ -62,12 +88,32 @@ function parseRawText(rawText, cb) {
 /* -------------------------------------------- */
 
 const testRules = 
-`F : F-G+F+G-F
+`
+
+F : F-G+F+G-F
 
 G : GG
+V : F+F
+F : FG
+
+V : G-F+GG
+J:_FF_
+t : wowza
 
 
-test : wowza`;
+`;
+
+const testActions =
+`+ : turn 120
+- : turn -18
+
+
+
+F : forward
+
+G : forward
+( : push
+) : pop`;
 
 parseProductionRules(testRules, (err, data) => {
   console.log(err);
@@ -75,12 +121,5 @@ parseProductionRules(testRules, (err, data) => {
 });
 
 
-const testActions =
-  `+ : turn 120
-  - : turn -18
-  F : forward
-  G : forward
-  ( : push
-  ) : pop`;
 
 // console.log(parseActions(testActions));
