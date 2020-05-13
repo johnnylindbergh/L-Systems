@@ -8,6 +8,12 @@ function parseProductionRules(rawText) {
       “G” → [“EGG”]
     }
   */
+
+  const split = rawText.split("\n");
+
+
+
+
 }
 
 // parses the text from the actions definitions
@@ -22,3 +28,26 @@ function parseActions(rawText) {
     }
   */
 }
+
+
+
+
+/* -------------------------------------------- */
+
+const testRules = 
+  `F : F-G+F+G-F
+  G : GG
+  test : wowza`;
+
+console.log(parseProductionRules(testRules));
+
+
+const testActions =
+  `+ : turn 120
+  - : turn -18
+  F : forward
+  G : forward
+  ( : push
+  ) : pop`;
+
+// console.log(parseActions(testActions));
