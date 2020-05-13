@@ -44,7 +44,61 @@ function parseActions(rawText, cb) {
       “[“ → () => { push(); }
     }
   */
-  // TODO: write this function
+  
+  parseRawText(rawText, (err, extractedRules) => {
+    if (err) return cb(err);
+
+    const actionsTable = {};
+    let lhs, rhs;
+
+    const turn = /turn(-?\d+)/;   // regular expr to extract the angle param from turn action
+
+    for (let i = 0; i < extractedRules.length; i++) {
+      lhs = extractedRules[i].LHS;
+      rhs = extractedRules[i].RHS;
+
+      if (rhs == "forward") {
+        actionsTable[lhs] = () => {
+          // this uses a global step length
+          line(0, STEP_LENGTH, 0, 0);
+          translate(0, STEP_LENGTH);
+        }
+
+      } else if (rhs == "push") {
+        actionsTable[lhs] = () => {
+          push();
+        }
+
+      } else if (rhs == "pop") {
+        actionsTable[lhs] = () => {
+          pop();
+        }
+
+      } else if (turn.test(rhs)) {
+        let match = rhs.match(turn);
+
+        if (match.length < 2) {
+          return cb(new Error(`Invalid use of turn syntax at "${lhs} : ${rhs}"`));
+        }
+
+        const angle = parseInt(match[1], 10);
+
+        // ensure angle parsed successfully
+        if (isNaN(angle)) {
+          return cb(new Error(`Invalid argument to turn at "${lhs} : ${rhs}"`));
+        }
+
+        actionsTable[lhs] = () => {
+          rotate(angle);
+        }
+
+      } else {
+        return cb(new Error(`Invalid righthand side at: "${lhs} : ${rhs}"`));
+      }
+    }
+
+    cb(null, actionsTable);
+  });
 }
 
 function parseRawText(rawText, cb) {
@@ -107,7 +161,8 @@ const testActions =
 `+ : turn 120
 - : turn -18
 
-
+h:turn-190
+Z: turn 1
 
 F : forward
 
@@ -115,11 +170,12 @@ G : forward
 ( : push
 ) : pop`;
 
-parseProductionRules(testRules, (err, data) => {
+// parseProductionRules(testRules, (err, data) => {
+//   console.log(err);
+//   console.log(data);
+// });
+
+parseActions(testActions, (err, data) => {
   console.log(err);
   console.log(data);
 });
-
-
-
-// console.log(parseActions(testActions));

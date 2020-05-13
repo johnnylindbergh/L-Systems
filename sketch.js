@@ -1,4 +1,6 @@
 
+STEP_LENGTH = 10;
+
 class Lsystem {
 
   constructor() {
