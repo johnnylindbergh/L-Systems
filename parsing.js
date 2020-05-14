@@ -62,9 +62,9 @@ function parseActions(rawText, cb) {
 
       if (rhs == "forward") {
         actionsTable[lhs] = () => {
-          // this uses a global step length
-          line(0, STEP_LENGTH, 0, 0);
-          translate(0, STEP_LENGTH);
+          // always step forward by 1 --scale() will handle the rest
+          line(0, 1, 0, 0);
+          translate(0, 1);
         }
 
       } else if (rhs == "push") {

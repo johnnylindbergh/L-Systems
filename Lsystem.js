@@ -2,8 +2,6 @@
   Lsystem.js: Class for working with the L-system itself
 */
 
-STEP_LENGTH = 10;
-
 class Lsystem {
 
   constructor() {
@@ -45,21 +43,21 @@ class Lsystem {
 
     }
     this.Lstring = originalAxiom;
-    this.drawLsys();
   }
 
   drawLsys() {
     background(255);
     push();
     translate(this.startX, this.startY);
+    scale(SCALE);
 
     for (var c = 0; c < this.Lstring.length; c++){
       var character = this.Lstring[c];
 
       if(character == 'F'){
         stroke(0);
-        line(0,this.stepLength,0,0);
-        translate(0,this.stepLength);
+        line(0, 15,0,0);
+        translate(0, 15);
 
       }
       if (this.pushAndPop){
