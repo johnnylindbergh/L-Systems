@@ -14,14 +14,19 @@
   <body>
   	<div>
 			<div id="settings">
-				<span>Axiom: <input id="axiom" type="text"></span>
+				<span>Axiom: <input id="axiom" type="text" value="FX"></span>
 
 				<p>Production Rules:</p>
-				<textarea id="prod-rules" cols="30" rows="10"></textarea>
+				<textarea id="prod-rules" cols="30" rows="10">X : X+YF+
+Y : -FX-Y</textarea>
 
 				<p>Graphics Instructions:</p>
-				<textarea id="graphics-instructs" cols="20" rows="10"></textarea>
+				<textarea id="graphics-instructs" cols="20" rows="10">
+F : forward
++ : turn 90
+- : turn -90</textarea>
 
+				<input id="iterations" type="number" value="10">
 				<br>
 				<input id="generate" type="button" value="Generate">
 

@@ -18,35 +18,44 @@ function mouseWheel(event) {
 }
 
 $(document).ready( function() {
-	lsys.calculateString();
+
+	makeLSystem();
 
 	$('#generate').click(() => {
+		makeLSystem();
+	});
+
+	function makeLSystem() {
 		$('#error-message').text('');	// clear any left-over errors
 
 		// extract raw text from inputs
 		const axiom = $('#axiom').val();
 		const productionRules = $('#prod-rules').val();
 		const graphicsInstructions = $('#graphics-instructs').val();
+		const iterations = parseInt($('#iterations').val(), 10);
 
-		if (!axiom) return showError('Axiom', "The axiom cannot be empty");
+		if (isNaN(iterations) || iterations < 0) return showError('Iterations', 'Invalid number of iterations');
+		if (!axiom) return showError('Axiom', 'The axiom cannot be empty');
 
 		// attempt to parse inputted production rules
 		parseProductionRules(productionRules, (err, rules) => {
 			if (err) return showError('Production Rule Parse Error', err.message);
 
-			// TODO: ... add the rules to the lsys
-
 			// attempt to parse inputted graphics instructions
 			parseActions(graphicsInstructions, (err, actions) => {
 				if (err) return showError('Graphics Instructions Parse Error', err.message);
 
-				// TODO: ... add actions to lsys
-
+				// update the L-system instance
 				lsys.axiom = axiom;
+				lsys.productionRules = rules;
+				lsys.actions = actions;
+				lsys.iteration = iterations;
+
+				// calculate a new string to be displayed
 				lsys.calculateString();
 			});
 		});
-	});
+	}
 
 	function showError(context, message) {
 		$('#error-message').text(`${context}: ${message}`);
