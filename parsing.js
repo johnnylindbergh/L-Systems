@@ -96,7 +96,7 @@ function parseActions(rawText, cb) {
         }
 
       } else {
-        return cb(new Error(`Invalid righthand side at: "${lhs} : ${rhs}"`));
+        return cb(new Error(`Invalid righthand side at: "${lhs} : ${rhs}". Must use a valid graphics command.`));
       }
     }
 
@@ -127,7 +127,7 @@ function parseRawText(rawText, cb) {
     }
 
     if (lhs.length != 1) {
-      return cb(new Error(`The line "${line} errored: The left-hand side must be only one character`));
+      return cb(new Error(`The line "${line}" errored: The left-hand side must be only one character`));
     }
 
     ret.push({

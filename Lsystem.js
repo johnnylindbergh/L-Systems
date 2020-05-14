@@ -52,10 +52,10 @@ class Lsystem {
     background(255);
     push();
     translate(this.startX, this.startY);
-    //console.log(axiom);
+
     for (var c = 0; c < this.Lstring.length; c++){
       var character = this.Lstring[c];
-      //console.log(character)
+
       if(character == 'F'){
         stroke(0);
         line(0,this.stepLength,0,0);

@@ -14,7 +14,19 @@
   <body>
   	<div>
 			<div id="settings">
-				
+				<span>Axiom: <input id="axiom" type="text"></span>
+
+				<p>Production Rules:</p>
+				<textarea id="prod-rules" cols="30" rows="10"></textarea>
+
+				<p>Graphics Instructions:</p>
+				<textarea id="graphics-instructs" cols="20" rows="10"></textarea>
+
+				<br>
+				<input id="generate" type="button" value="Generate">
+
+				<p id="error-message"></p>
+<!-- 				
 				Axiom: <input type="text" value="FX" id ="setAxiom"/> <br>
 
 				X ->  <input type="text" value="[X+YF+]" id ="setXrule"/> <br>
@@ -37,7 +49,7 @@
 				Number of Iterations : <br>
 				<input type="range" value="5" id="setIterations" min="2" max = "12"/><div id="iterations">5</div>
 				
-				<input type="button" id="generate" value="Generate" />
+				<input type="button" id="generate" value="Generate" /> -->
 			</div>
 		</div>
 	</body>
