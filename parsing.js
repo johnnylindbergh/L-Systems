@@ -117,7 +117,7 @@ function parseRawText(rawText, cb) {
     if (line == '') continue; // ignore blank lines
 
     if (splitByColon.length != 2) {
-      return cb(new Error(`The line "${line}" had an incorrect amount of colons`));
+      return cb(new Error(`The line "${line}" must have a single colon separating the lefthand side from the righthand side`));
     }
 
     let lhs = splitByColon[0], rhs = splitByColon[1];

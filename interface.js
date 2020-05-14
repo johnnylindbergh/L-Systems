@@ -13,6 +13,8 @@ $(document).ready( function() {
 		const productionRules = $('#prod-rules').val();
 		const graphicsInstructions = $('#graphics-instructs').val();
 
+		if (!axiom) return showError('Axiom', "The axiom cannot be empty");
+
 		// attempt to parse inputted production rules
 		parseProductionRules(productionRules, (err, rules) => {
 			if (err) return showError('Production Rule Parse Error', err.message);
