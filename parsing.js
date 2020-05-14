@@ -1,3 +1,6 @@
+/*
+  parsing.js: Functions for parsing the grammar inputted by the user
+*/
 
 // parses the text from the production rules
 function parseProductionRules(rawText, cb) {
@@ -141,41 +144,41 @@ function parseRawText(rawText, cb) {
 
 /* -------------------------------------------- */
 
-const testRules = 
-`
+// const testRules = 
+// `
 
-F : F-G+F+G-F
+// F : F-G+F+G-F
 
-G : GG
-V : F+F
-F : FG
+// G : GG
+// V : F+F
+// F : FG
 
-V : G-F+GG
-J:_FF_
-t : wowza
+// V : G-F+GG
+// J:_FF_
+// t : wowza
 
 
-`;
+// `;
 
-const testActions =
-`+ : turn 120
-- : turn -18
+// const testActions =
+// `+ : turn 120
+// - : turn -18
 
-h:turn-190
-Z: turn 1
+// h:turn-190
+// Z: turn 1
 
-F : forward
+// F : forward
 
-G : forward
-( : push
-) : pop`;
+// G : forward
+// ( : push
+// ) : pop`;
 
 // parseProductionRules(testRules, (err, data) => {
 //   console.log(err);
 //   console.log(data);
 // });
 
-parseActions(testActions, (err, data) => {
-  console.log(err);
-  console.log(data);
-});
+// parseActions(testActions, (err, data) => {
+//   console.log(err);
+//   console.log(data);
+// });

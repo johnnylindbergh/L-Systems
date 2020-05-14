@@ -1,3 +1,7 @@
+/*
+	interface.js: Controls for interacting with the L-system
+*/
+
 $(document).ready( function() {
 	lsys.calculateString();
 
