@@ -4,18 +4,19 @@
 
 const SCALE_DELTA = 0.05;
 
-function mouseWheel(event) {
-	// scale up or down depending on scroll direction
-	if (event.delta > 0) {
-		SCALE += SCALE_DELTA;
-	} else if (event.delta < 0) {
-		SCALE -= SCALE_DELTA;
-		if (SCALE < 0) SCALE = 0;
-	}
+// function mouseWheel(event) {
+// 	// scale up or down depending on scroll direction
+// 	console.log(event.delta)
+// 	if (event.delta > 0) {
+// 		SCALE += SCALE_DELTA;
+// 	} else if (event.delta < 0) {
+// 		SCALE -= SCALE_DELTA;
+// 		if (SCALE < 0) SCALE = 0;
+// 	}
 
-	// lsys.startX += (lsys.startX - mouseX) * (SCALE - 1);
-	// lsys.startY += (lsys.startY - mouseY) * (SCALE - 1);
-}
+// 	// lsys.startX += (lsys.startX - mouseX) * (SCALE - 1);
+// 	// lsys.startY += (lsys.startY - mouseY) * (SCALE - 1);
+// }
 
 $(document).ready( function() {
 
