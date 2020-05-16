@@ -22,6 +22,8 @@ Each action follows a similar syntax of `LHS : RHS`, but the RHS must come from 
 - `push`: push position and angle onto stack
 - `pop`: pop position and angle from stack
 
+The RHS can also be a list of such commands, separated by commas. For example, `F : push, turn -45` is a valid action rule. When this action is applied, first the position/angle will be pushed, then a rotation of -45 degrees will be performed.
+
 ## Example L-System grammar 
 
 #### Axiom
