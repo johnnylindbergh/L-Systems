@@ -61,6 +61,10 @@ $(document).ready( function() {
 		$('#error-message').text(`${context}: ${message}`);
 	}
 
+	$('#toggle-ui').click(() => {
+		$('#controls-wrapper').slideToggle();
+	});
+
 
 
 	// $('#matrix').prop('checked', lsys.pushAndPop);
