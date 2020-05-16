@@ -4,6 +4,8 @@
 
 let lsys;
 let SCALE = 1;
+let STEP_LENGTH = 10;
+let LINE_COLOR;
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -11,8 +13,10 @@ function setup() {
   canvas.position(0, 0);
   lsys = new Lsystem();
 
+  LINE_COLOR = color(0, 0, 255);
+
   angleMode(DEGREES);
-  stroke(0,0,255);
+  stroke(LINE_COLOR);
   strokeWeight(1);
   frameRate(5);
   lsys.startX = windowWidth / 2;
@@ -20,6 +24,8 @@ function setup() {
 }
 
 function draw(){
+  stroke(LINE_COLOR);
+
   // if click/drag mode, move origin to mouse position
   if (lsys.shiftMode) {
     lsys.startX = mouseX;
