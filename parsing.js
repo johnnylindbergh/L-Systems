@@ -70,8 +70,8 @@ function parseActions(rawText, cb) {
         if (action == "forward") {
           actionsList.push(() => {
             // always step forward by 10 --scale() will handle the rest
-            line(0, 10, 0, 0);
-            translate(0, 10);
+            line(0, STEP_LENGTH, 0, 0);
+            translate(0, STEP_LENGTH);
           });
   
         } else if (action == "push") {

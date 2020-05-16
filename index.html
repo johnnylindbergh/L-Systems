@@ -14,47 +14,29 @@
   <body>
   	<div>
 			<div id="settings">
-				<span>Axiom: <input id="axiom" type="text" value="FX"></span>
+				<div id="controls-wrapper">
+					<span>Axiom: <input id="axiom" type="text" value="FX"></span>
 
-				<p>Production Rules:</p>
-				<textarea id="prod-rules" cols="30" rows="10">X : X+YF+
+					<p>Production Rules:</p>
+					<textarea id="prod-rules" cols="30" rows="10">X : X+YF+
 Y : -FX-Y</textarea>
 
-				<p>Graphics Instructions:</p>
-				<textarea id="graphics-instructs" cols="20" rows="10">
+					<p>Graphics Instructions:</p>
+					<textarea id="graphics-instructs" cols="20" rows="10">
 F : forward
 + : turn 90
 - : turn -90</textarea>
+					<br>
+					<span>Iterations: </span><input id="iterations" type="number" value="10">
+					<br>
+					<input id="generate" type="button" value="Generate">
 
-				<input id="iterations" type="number" value="10">
-				<br>
-				<input id="generate" type="button" value="Generate">
+					<p id="error-message"></p>
 
-				<p id="error-message"></p>
-<!-- 				
-				Axiom: <input type="text" value="FX" id ="setAxiom"/> <br>
-
-				X ->  <input type="text" value="[X+YF+]" id ="setXrule"/> <br>
-
-				Y ->  <input type="text" value="[-FX-Y]" id="setYrule"/><br>
-
-				Angle of Rotation:
-				<input type="range" value="90" id="setAngle" min="0" max = "360"/><br>
-
-				Segment Length:
-				<input type="range" value="5" id="setStepLength" min="1" max = "100"/><div id="stepLength">5</div>
-
-				Random Rotation: <input type="checkbox" id="randomRotation"/><br>
-				<div id ="maxRotationDiv" style="display: none;">Max Rotation: <input  type="text" value="25" id="maxRotation" min="0" max = "360"/> 
+					Line Color: <input id="line-color" type="color">
 				</div>
-				<br>
 
-				Push/pop Matrix: <input checked type="checkbox" id="matrix"/><br>
-
-				Number of Iterations : <br>
-				<input type="range" value="5" id="setIterations" min="2" max = "12"/><div id="iterations">5</div>
-				
-				<input type="button" id="generate" value="Generate" /> -->
+				<button id="toggle-ui">Toggle Controls</button>
 			</div>
 		</div>
 	</body>
