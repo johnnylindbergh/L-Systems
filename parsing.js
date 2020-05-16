@@ -53,51 +53,62 @@ function parseActions(rawText, cb) {
 
     const actionsTable = {};
     let lhs, rhs;
+    let righthandSides, actionsList;
 
     const turn = /turn(-?\d+)/;   // regular expr to extract the angle param from turn action
 
     for (let i = 0; i < extractedRules.length; i++) {
       lhs = extractedRules[i].LHS;
       rhs = extractedRules[i].RHS;
+      righthandSides = rhs.split(',');  // split possibly multiple actions by comma
+      actionsList = [];
 
-      if (rhs == "forward") {
-        actionsTable[lhs] = () => {
-          // always step forward by 10 --scale() will handle the rest
-          line(0, 10, 0, 0);
-          translate(0, 10);
+      // for each of the actions associated with this symbol
+      for (let j = 0; j < righthandSides.length; j++) {
+        let action = righthandSides[j];
+
+        if (action == "forward") {
+          actionsList.push(() => {
+            // always step forward by 10 --scale() will handle the rest
+            line(0, 10, 0, 0);
+            translate(0, 10);
+          });
+  
+        } else if (action == "push") {
+          actionsList.push(() => {
+            push();
+          });
+  
+        } else if (action == "pop") {
+          actionsList.push(() => {
+            pop();
+          });
+  
+        } else if (turn.test(action)) {
+          let match = action.match(turn);
+  
+          if (match.length < 2) {
+            return cb(new Error(`Invalid use of turn syntax at "${lhs} : ${rhs}"`));
+          }
+  
+          const angle = parseInt(match[1], 10);
+  
+          // ensure angle parsed successfully
+          if (isNaN(angle)) {
+            return cb(new Error(`Invalid argument to turn at "${lhs} : ${rhs}"`));
+          }
+  
+          actionsList.push(() => {
+            rotate(angle);
+          });
+  
+        } else {
+          return cb(new Error(`Invalid righthand side at: "${lhs} : ${rhs}". Must use a valid graphics command.`));
         }
-
-      } else if (rhs == "push") {
-        actionsTable[lhs] = () => {
-          push();
-        }
-
-      } else if (rhs == "pop") {
-        actionsTable[lhs] = () => {
-          pop();
-        }
-
-      } else if (turn.test(rhs)) {
-        let match = rhs.match(turn);
-
-        if (match.length < 2) {
-          return cb(new Error(`Invalid use of turn syntax at "${lhs} : ${rhs}"`));
-        }
-
-        const angle = parseInt(match[1], 10);
-
-        // ensure angle parsed successfully
-        if (isNaN(angle)) {
-          return cb(new Error(`Invalid argument to turn at "${lhs} : ${rhs}"`));
-        }
-
-        actionsTable[lhs] = () => {
-          rotate(angle);
-        }
-
-      } else {
-        return cb(new Error(`Invalid righthand side at: "${lhs} : ${rhs}". Must use a valid graphics command.`));
       }
+
+      // add all those funcs to actions for this symbol
+      actionsTable[lhs] = actionsList;
     }
 
     cb(null, actionsTable);
@@ -171,7 +182,10 @@ function parseRawText(rawText, cb) {
 
 // G : forward
 // ( : push
-// ) : pop`;
+// ) : pop
+
+// [ : push, turn -45
+// `;
 
 // parseProductionRules(testRules, (err, data) => {
 //   console.log(err);
@@ -181,4 +195,6 @@ function parseRawText(rawText, cb) {
 // parseActions(testActions, (err, data) => {
 //   console.log(err);
 //   console.log(data);
+
+//   console.log(data['['].toString());
 // });

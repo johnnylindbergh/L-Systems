@@ -32,8 +32,12 @@ class Lsystem {
   calculateString(){
     var originalAxiom = this.axiom
     var newAxiom = '', sym, randRHS;
+
+    // for each iteration
     for (var i = 0; i < this.iteration; i++){
       newAxiom = ''
+
+      // expand each symbol based on its production rules
       for (var c = 0; c < originalAxiom.length; c++){
         sym = originalAxiom[c];
         let possibleRHS = this.productionRules[sym];
@@ -53,18 +57,6 @@ class Lsystem {
           // just add the symbol
           newAxiom += sym;
         }
-
-        // if (originalAxiom[c] == 'X'){
-        //   newAxiom +=lsys.Xrule;
-        // }
-        
-        // if (originalAxiom[c] == 'Y'){
-        //   newAxiom +=lsys.Yrule; 
-        // } 
-
-        // if (originalAxiom[c] != 'X' && originalAxiom[c] != 'Y'){
-        //   newAxiom += originalAxiom[c];
-        // }
       }
       originalAxiom = newAxiom;
 
@@ -83,9 +75,12 @@ class Lsystem {
 
       let action = this.actions[character];
 
-      // if there is an action associated with this symbol, apply it
+      // if there are actions associated with this symbol
       if (action) {
-        action();
+        // call each of the actions, in order, associated with this symbol
+        for (let a = 0; a < action.length; a++) {
+          action[a]();
+        }
       }
 
       // if(character == 'F'){
