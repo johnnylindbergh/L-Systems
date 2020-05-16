@@ -8,27 +8,12 @@ class Lsystem {
     this.axiom;
     this.productionRules;
     this.actions;
-
     this.iteration = 10;
     this.shiftMode = false;
     this.Lstring = '';
-
-
-    // this.axiom = '[FX]';
-    // this.Lstring = '';
-    // this.angle = 90;
-    // this.pushAndPop = false;
-    // this.randomRotation = false;
-    // this.maxRotation = 25;
-    // this.iteration = 9;
-    // this.stepLength = 10;
-    // this.Xrule = '[X+YF+]';
-    // this.Yrule = '[-FX-Y]';
-    // this.startX= 500;
-    // this.startY= 500;
-    // this.shiftMode = false;
   }
 
+  // calculate the L system's string after several generations
   calculateString(){
     var originalAxiom = this.axiom
     var newAxiom = '', sym, randRHS;
@@ -64,12 +49,14 @@ class Lsystem {
     this.Lstring = originalAxiom;
   }
 
+  // display the L system to the world
   drawLsys() {
     background(255);
     push();
     translate(this.startX, this.startY);
     scale(SCALE);
 
+    // for each symbol in the string
     for (var c = 0; c < this.Lstring.length; c++){
       var character = this.Lstring[c];
 
@@ -82,35 +69,6 @@ class Lsystem {
           action[a]();
         }
       }
-
-      // if(character == 'F'){
-      //   stroke(0);
-      //   line(0, 15,0,0);
-      //   translate(0, 15);
-
-      // }
-      // if (this.pushAndPop){
-      //   if(character == '['){
-      //     push();  
-      //   }
-      //   if(character == ']'){
-      //     pop();  
-      //   }
-      // }
-      // if(character == '+'){
-      //   if (this.randomRotation){
-      //     rotate(random(this.maxRotation));
-      //   } else {
-      //     rotate(this.angle);
-      //   }
-      // }
-      // if(character == '-'){
-      //   if (this.randomRotation){
-      //     rotate(-random(this.maxRotation));
-      //   } else {
-      //     rotate(-this.angle);
-      //   }   
-      // }
     }
 
     pop();
