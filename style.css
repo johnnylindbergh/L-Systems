@@ -10,4 +10,5 @@ div {
 	background-color: rgba(0, 0, 0, 0.5);
 	width: 20%;
 	margin:3px;
+	user-select: none;
 }

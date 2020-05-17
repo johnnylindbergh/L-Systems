@@ -1,5 +1,6 @@
 /*
   zoom.js: Zooming/scaling of L system view
+  Adapted from: https://codepen.io/amir-s/pen/jzqZdG?editors=0010
 */
 
 const controls = {

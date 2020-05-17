@@ -5,9 +5,6 @@
 const SCALE_DELTA = 0.5;
 
 $(document).ready( function() {
-
-	makeLSystem();
-
 	$('#generate').click(() => {
 		makeLSystem();
 	});
@@ -58,4 +55,18 @@ $(document).ready( function() {
 		LINE_COLOR = color(col);
 		renderLSys();
 	});
+
+	// load a preset into the visualizer
+	function loadLibraryItem(params) {
+		// update all params in the UI
+		$('#axiom').val(params.axiom);
+		$('#prod-rules').text(params.productionRules);
+		$('#graphics-instructs').text(params.actions);
+		$('#iterations').val(params.iterations);
+
+		$('#generate').click();	// run everything
+	}
+
+	loadLibraryItem(dragonCurve);	// default to dragon curve
+
 });

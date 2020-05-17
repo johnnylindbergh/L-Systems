@@ -50,11 +50,7 @@ class Lsystem {
 
   // display the L system to the world
   drawLsys() {
-   
-  //  translate(this.startX, this.startY);
-    //scale(SCALE);
-   //scale(controls.view.zoom)
-       // for each symbol in the string
+    // for each symbol in the string
     for (var c = 0; c < this.Lstring.length; c++){
       var character = this.Lstring[c];
 
@@ -68,7 +64,6 @@ class Lsystem {
         }
       }
     }
-
   }
 
 }

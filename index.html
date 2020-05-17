@@ -9,31 +9,27 @@
 		<script language="javascript" type="text/javascript" src="zoom.js"></script> 
 		<script language="javascript" type="text/javascript" src="interface.js"></script>
 		<script language="javascript" type="text/javascript" src="parsing.js"></script> 
+		<script language="javascript" type="text/javascript" src="library.js"></script> 
     <link rel="stylesheet" type="text/css" href="style.css">
     <style> body {padding: 0; margin: 0;} </style>
   </head>
   <body>
 		<div id="settings">
 			<div id="controls-wrapper">
-				<span>Axiom: <input id="axiom" type="text" value="FX"></span>
+				<span>Axiom: <input id="axiom" type="text"></span>
 
 				<p>Production Rules:</p>
-				<textarea id="prod-rules" cols="30" rows="10">X : X+YF+
-Y : -FX-Y</textarea>
+				<textarea id="prod-rules" cols="30" rows="10"></textarea>
 
 				<p>Graphics Instructions:</p>
-				<textarea id="graphics-instructs" cols="20" rows="10">
-F : forward
-+ : turn 90
-- : turn -90</textarea>
+				<textarea id="graphics-instructs" cols="20" rows="10"></textarea>
 				<br>
-				<span>Iterations: </span><input id="iterations" type="number" value="10">
+				<span>Iterations: </span><input id="iterations" type="number" value="1"><br>
+				<span>Line Color: </span><input id="line-color" type="color">
 				<br>
 				<input id="generate" type="button" value="Generate">
 
 				<p id="error-message"></p>
-
-				Line Color: <input id="line-color" type="color">
 			</div>
 
 			<button id="toggle-ui">Toggle Controls</button>
