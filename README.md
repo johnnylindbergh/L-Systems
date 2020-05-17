@@ -32,7 +32,7 @@ F-G-G
 ```
 #### Production Rules
 ```
-F : F−G+F+G−F
+F : F-G+F+G-F
 G : GG
 ```
 #### Actions
