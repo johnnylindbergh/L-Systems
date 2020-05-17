@@ -40,6 +40,7 @@ $(document).ready( function() {
 
 				// calculate a new string to be displayed
 				lsys.calculateString();
+				renderLSys();
 			});
 		});
 	}
@@ -55,5 +56,6 @@ $(document).ready( function() {
 	$('#line-color').change(() => {
 		let col = document.getElementById('line-color').value;
 		LINE_COLOR = color(col);
+		renderLSys();
 	});
 });

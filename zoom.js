@@ -11,12 +11,6 @@ window.mousePressed = e => Controls.move(controls).mousePressed(e)
 window.mouseDragged = e => Controls.move(controls).mouseDragged(e);
 window.mouseReleased = e => Controls.move(controls).mouseReleased(e)
 
-function mouseClicked() {
-  if (dist(mouseX,mouseY, lsys.startX, lsys.startY) < 200) {
-    lsys.shiftMode = !lsys.shiftMode;
-  }
-}
-
 class Controls {
   static move(controls) {
     function mousePressed(e) {
@@ -38,12 +32,16 @@ class Controls {
         controls.view.y += dy;
         controls.viewPos.prevX = pos.x, controls.viewPos.prevY = pos.y
       }
+
+      renderLSys();
     }
 
     function mouseReleased(e) {
       controls.viewPos.isDragging = false;
       controls.viewPos.prevX = null;
       controls.viewPos.prevY = null;
+
+      renderLSys();
     }
  
     return {

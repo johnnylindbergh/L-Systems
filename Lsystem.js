@@ -9,7 +9,6 @@ class Lsystem {
     this.productionRules;
     this.actions;
     this.iteration = 10;
-    this.shiftMode = false;
     this.Lstring = '';
   }
 
@@ -51,7 +50,6 @@ class Lsystem {
 
   // display the L system to the world
   drawLsys() {
-    background(255);
    
   //  translate(this.startX, this.startY);
     //scale(SCALE);

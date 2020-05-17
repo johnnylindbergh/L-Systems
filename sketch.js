@@ -7,34 +7,30 @@ let SCALE = 1;
 let STEP_LENGTH = 10;
 let LINE_COLOR;
 
-
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.style('z-index', '-1');
   canvas.position(0, 0);
-  canvas.mouseWheel(e => Controls.zoom(controls).worldZoom(e))
+  canvas.mouseWheel(e => { Controls.zoom(controls).worldZoom(e); renderLSys(); })
   lsys = new Lsystem();
 
-  LINE_COLOR = color(0, 0, 255);
+  LINE_COLOR = color(0, 0, 0);
 
   angleMode(DEGREES);
   stroke(LINE_COLOR);
   strokeWeight(1);
-  frameRate(5);
+
   lsys.startX = windowWidth / 2;
   lsys.startY = windowHeight / 2;
 }
 
-function draw(){
+// render the L system wherever it needs to be
+function renderLSys() {
   stroke(LINE_COLOR);
-
-  // if click/drag mode, move origin to mouse position
-  if (lsys.shiftMode) {
-    lsys.startX = mouseX;
-    lsys.startY = mouseY;
-  }
+  background(255);
   push();
   translate(controls.view.x, controls.view.y);
+  rotate(180);
   scale(controls.view.zoom);
   lsys.drawLsys();
   pop();
