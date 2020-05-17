@@ -19,15 +19,25 @@
 				<span>Axiom: <input id="axiom" type="text"></span>
 
 				<p>Production Rules:</p>
-				<textarea id="prod-rules" cols="30" rows="10"></textarea>
+				<textarea id="prod-rules" cols="20" rows="5"></textarea>
 
 				<p>Graphics Instructions:</p>
-				<textarea id="graphics-instructs" cols="20" rows="10"></textarea>
+				<textarea id="graphics-instructs" cols="20" rows="5"></textarea>
 				<br>
 				<span>Iterations: </span><input id="iterations" type="number" value="1"><br>
 				<span>Line Color: </span><input id="line-color" type="color">
 				<br>
 				<input id="generate" type="button" value="Generate">
+
+				<div id="library">
+					<h4>L-Systems</h4>
+					<p onclick="loadLibraryItem(dragonCurve);">Dragon Curve</p>
+					<p onclick="loadLibraryItem(recursiveTree);">Recursive Tree</p>
+					<p onclick="loadLibraryItem(kochCurve);">Koch Curve</p>
+					<p onclick="loadLibraryItem(sierpinski);">Sierpinski Triangle</p>
+					<p onclick="loadLibraryItem(sierpinskiArrowheadCurve);">Sierpinski Arrowhead Curve</p>
+					<p onclick="loadLibraryItem(plant);">Plant</p>
+				</div>
 
 				<p id="error-message"></p>
 			</div>

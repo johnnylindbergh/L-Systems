@@ -1,6 +1,17 @@
+@import 'https://fonts.googleapis.com/css?family=PT+Sans';
+
+* {
+	font-family: 'PT Sans', sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 250px;
+}
+
 div {
-		font-size: 15px;
-	color: black;
+	font-size: 15px;
 	padding: 3px;
 	text-align: left;
 	font-family: Lucida Sans Unicode;
@@ -8,7 +19,44 @@ div {
 
 #settings {
 	background-color: rgba(0, 0, 0, 0.5);
-	width: 20%;
+	width: 250px;
 	margin:3px;
 	user-select: none;
+	color: white;
+	padding: 6px;
+	border-radius: 5px;
+}
+
+#settings p {
+	margin: 0;
+}
+
+textarea {
+	font-family: monospace;
+}
+
+#library {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#library p {
+	margin: 0;
+}
+
+#library p:hover {
+	cursor: pointer;
+	color: red;
+}
+
+#library h4 {
+	margin: 0;
+}
+
+#iterations {
+	width: 45px;
+}
+
+#toggle-ui:hover {
+	cursor: pointer;
 }
