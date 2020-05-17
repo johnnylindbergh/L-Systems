@@ -46,7 +46,7 @@ textarea {
 
 #library p:hover {
 	cursor: pointer;
-	color: red;
+	color: #4dffff;
 }
 
 #library h4 {
@@ -55,8 +55,53 @@ textarea {
 
 #iterations {
 	width: 45px;
+	margin-bottom: 10px;
+}
+
+#line-color {
+	margin-bottom: 10px;
 }
 
 #toggle-ui:hover {
 	cursor: pointer;
+}
+
+.btn {
+	font-size: 13px;
+	display: inline-block;
+	background-color: rgba(0,0,0, 0.4);
+	width: 200px;
+	color: white;
+	padding: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background-color: rgba(0,0,0,0.55);
+}
+
+#error-message {
+	color: #ff9999;
+	/* text-shadow: 0 0 14px #ffffff; */
+}
+
+#err-wrapper {
+	background-color: rgba(0,0,0, 0.4);
+}
+
+#generate {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+h4 {
+	font-size: 17px;
+}
+
+a {
+	color: #1affff;
 }

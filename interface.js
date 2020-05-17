@@ -24,8 +24,8 @@ $(document).ready( function() {
 function loadLibraryItem(params) {
 	// update all params in the UI
 	$('#axiom').val(params.axiom);
-	$('#prod-rules').text(params.productionRules);
-	$('#graphics-instructs').text(params.actions);
+	$('#prod-rules').val(params.productionRules);
+	$('#graphics-instructs').val(params.actions);
 	$('#iterations').val(params.iterations);
 
 	makeLSystem();	// run everything
@@ -33,6 +33,7 @@ function loadLibraryItem(params) {
 
 // extract data from user inputs and construct/render a new L system
 function makeLSystem() {
+	$('#err-wrapper').hide();
 	$('#error-message').text('');	// clear any left-over errors
 
 	// extract raw text from inputs
@@ -67,5 +68,6 @@ function makeLSystem() {
 
 // display an error to the user
 function showError(context, message) {
+	$('#err-wrapper').show();
 	$('#error-message').text(`${context}: ${message}`);
 }
