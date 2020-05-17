@@ -1,6 +1,8 @@
 # L-Systems
 L-systems for the people, by the people.
 
+![](https://raw.githubusercontent.com/johnnylindbergh/L-Systems/master/plant_demo.png)
+
 This interactive L-system visualization allows the user to explore L-systems, by defining the rules of the system. The interface allows the user to customize three components:
 1. the axiom
 2. the production rules
