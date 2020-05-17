@@ -115,6 +115,8 @@ function parseActions(rawText, cb) {
   });
 }
 
+/*  extract the left- and righthand sides from 
+    the raw text in the productions/actions inputs */
 function parseRawText(rawText, cb) {
   if (rawText == "") return cb(new Error("There were no production rules entered!"));
 

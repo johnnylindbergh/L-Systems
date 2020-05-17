@@ -2,14 +2,18 @@
 <html lang="en">
   <head>
 		<meta charset="utf-8"/>
+		<!-- libraries -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script language="javascript" type="text/javascript" src="./lib/p5.js"></script>
+
+		<!-- local js -->
+		<script language="javascript" type="text/javascript" src="globals.js"></script> 
+		<script language="javascript" type="text/javascript" src="library.js"></script> 
 		<script language="javascript" type="text/javascript" src="Lsystem.js"></script> 
 		<script language="javascript" type="text/javascript" src="sketch.js"></script> 
 		<script language="javascript" type="text/javascript" src="zoom.js"></script> 
 		<script language="javascript" type="text/javascript" src="interface.js"></script>
 		<script language="javascript" type="text/javascript" src="parsing.js"></script> 
-		<script language="javascript" type="text/javascript" src="library.js"></script> 
     <link rel="stylesheet" type="text/css" href="style.css">
     <style> body {padding: 0; margin: 0;} </style>
   </head>
@@ -19,10 +23,10 @@
 				<span>Axiom: <input id="axiom" type="text"></span>
 
 				<p>Production Rules:</p>
-				<textarea id="prod-rules" cols="20" rows="5"></textarea>
+				<textarea id="prod-rules" cols="25" rows="5"></textarea>
 
 				<p>Graphics Instructions:</p>
-				<textarea id="graphics-instructs" cols="20" rows="5"></textarea>
+				<textarea id="graphics-instructs" cols="25" rows="5"></textarea>
 				<br>
 				<span>Iterations: </span><input id="iterations" type="number" value="1"><br>
 				<span>Line Color: </span><input id="line-color" type="color">
